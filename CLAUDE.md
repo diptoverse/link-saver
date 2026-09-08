@@ -60,7 +60,7 @@ src/
 
 - Never hardcode secrets. Everything sensitive comes from `import.meta.env`.
 - Never commit `.env`. It is gitignored. `.env.example` is the committed placeholder.
-- `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are the only required env vars.
+- `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` are the only required env vars.
 - `main` branch must always build and deploy cleanly.
 
 ---
@@ -71,20 +71,36 @@ This is the exact workflow to follow for every sprint, every time, without the u
 
 ---
 
-### Step 1 — Sprint briefing
+### Step 1 — Read CLAUDE.md
 
-When a sprint starts, give this before touching any code:
+Read CLAUDE.md before touching any code.
+
+---
+
+### Step 2 — Sprint briefing
+
+Give this before touching any code:
 
 - **What** — what this sprint builds, from the user's perspective
-- **Why** — why it's needed now, what it unlocks for later sprints
 - **Sub-tasks** — the full ordered list of sub-tasks to complete this sprint
-- **Deliverables** — concrete, testable things that confirm the sprint is done
 
 Wait for the user to say they're ready before moving on.
 
 ---
 
-### Step 2 — Sub-tasks one by one
+### Step 3 — Deliverables checklist
+
+Show the sprint's deliverables checklist — the concrete, testable items that confirm the sprint is done.
+
+---
+
+### Step 4 — Create/use the sprint feature branch
+
+Create the branch (`feature/<name>`) if it doesn't exist, or check it out if it does.
+
+---
+
+### Step 5 — Sub-tasks one by one
 
 Go through each sub-task in order. For every sub-task:
 
@@ -92,51 +108,75 @@ Go through each sub-task in order. For every sub-task:
 2. Tell the user **why** we're doing it — plain language, 1-2 sentences
 3. Ask: "Do you want to do this or should I?"
 
-If user says **"me"** — tell them exactly what to run or do, then wait for confirmation before moving to the next sub-task.
+If user says **"me"** — stay silent. Do not give instructions or help unless the user asks.
 
-If user says **"you"** — explain how you will implement it (which file, what change, why that approach), wait for the user to confirm, then write the code.
+If user says **"you"** — explain exactly how you will implement it at the code level and what it impacts, wait for the user to confirm, then write the code.
 
-Never skip the what/why. Never write code without being asked. Never move to the next sub-task without confirmation the current one is done.
+Never write code without being asked. Never move to the next sub-task without confirmation the current one is done.
 
 ---
 
-### Step 3 — Sprint completion check
+### Step 6 — Test and verify each sub-task
+
+After each sub-task is complete, verify the result. Confirm it works before moving on.
+
+---
+
+### Step 7 — Sprint completion check
 
 After all sub-tasks are done, go through the sprint's deliverables checklist one by one and confirm each is met. Fix anything missing before closing the sprint.
 
 ---
 
-### Step 4 — Commit, push, PR, merge
+### Step 8 — Update CLAUDE.md, review, and commit
 
 Only after the completion check passes:
 
-1. Commit with the correct conventional commit message
-2. Push the branch
-3. Open a PR on GitHub
-4. Confirm CI passes and Vercel preview looks correct
-5. Squash merge the PR
-6. Pull main locally
+1. Update CLAUDE.md — mark all sprint checklist items as done
+2. Review all changes (code + CLAUDE.md together)
+3. Commit sprint implementation and CLAUDE.md in a single commit with a conventional commit message
 
 ---
 
-### Step 5 — Handoff (automatic, every sprint)
+### Step 9 — Push the feature branch
 
-After the sprint is fully merged, without the user asking:
-
-1. Mark all checklist items as done in the sprint deliverables section below
-2. Add a handoff block under the sprint with the exact prompt the user can copy-paste into a new session to start the next sprint — with full context baked in, no assumptions
+Push the branch to the remote.
 
 ---
 
-## Sprint handoffs
+### Step 10 — Create the Pull Request
 
-After each sprint is fully done (all checklist items checked), the following handoff block is added below that sprint. Use it to start the next sprint in a new session — copy the prompt exactly.
+Open a PR on GitHub.
 
-The prompt is designed to:
-- Tell Claude which sprint we're on and what was already done
-- Re-anchor the code quality and UI copy rules
-- Give the exact task without needing to re-read the full plan
-- Keep the same standards across sessions
+---
+
+### Step 11 — Review CI and PR changes
+
+Confirm CI passes and Vercel preview looks correct. Fix anything before merging.
+
+---
+
+### Step 12 — Squash and merge into main
+
+Squash merge the PR on GitHub.
+
+---
+
+### Step 13 — Delete the remote feature branch
+
+Delete the remote branch after merging.
+
+---
+
+### Step 14 — Switch to main, pull, delete local branch
+
+Switch to `main` locally, pull the latest changes, and delete the local feature branch.
+
+---
+
+### Step 15 — Handoff
+
+Give a copy-paste prompt the user can drop into a new session to continue at the same quality level — with full context on what was done, what's next, and which rules apply.
 
 ---
 
@@ -201,14 +241,14 @@ We are starting Sprint 2: Supabase schema and client setup.
 ---
 
 ### Sprint 2 — Supabase schema + client
-- [ ] `links` table created in Supabase dashboard with correct schema
-- [ ] RLS enabled, "allow all" policy in place
-- [ ] `@supabase/supabase-js` installed
-- [ ] `src/lib/supabase.js` exports a working Supabase client
-- [ ] `.env.example` has `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as placeholders
-- [ ] Local `.env` filled with real keys (not committed)
-- [ ] Vercel env vars set for both keys
-- [ ] `npm run build` passes
+- [x] `links` table created in Supabase dashboard with correct schema
+- [x] RLS enabled, "allow all" policy in place
+- [x] `@supabase/supabase-js` installed
+- [x] `src/lib/supabase.js` exports a working Supabase client
+- [x] `.env.example` has `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` as placeholders
+- [x] Local `.env` filled with real keys (not committed)
+- [x] Vercel env vars set for both keys
+- [x] `npm run build` passes
 
 ---
 
