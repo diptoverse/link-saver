@@ -65,6 +65,32 @@ src/
 
 ---
 
+## Sprint start protocol
+
+Before doing anything at the start of a sprint, always give the user this overview:
+
+1. **What it does** — what this sprint adds from the user's perspective, and why it matters for the sprints after it
+2. **How it's implemented** — the technical approach, file by file
+3. **Steps** — ordered list of every action in the sprint
+4. **Success checks** — concrete, testable things that confirm the sprint is done correctly
+
+Only after the user says they're ready, ask about the first task.
+For each task, ask whether the user wants to do it or Claude before executing anything.
+
+---
+
+## Sprint handoffs
+
+After each sprint is fully done (all checklist items checked), the following handoff block is added below that sprint. Use it to start the next sprint in a new session — copy the prompt exactly.
+
+The prompt is designed to:
+- Tell Claude which sprint we're on and what was already done
+- Re-anchor the code quality and UI copy rules
+- Give the exact task without needing to re-read the full plan
+- Keep the same standards across sessions
+
+---
+
 ## Sprint deliverables
 
 A sprint is done only when every item is checked.
@@ -77,9 +103,25 @@ A sprint is done only when every item is checked.
 - [x] `README.md` written
 - [x] `.github/workflows/ci.yml` — build gate on PRs
 - [x] `npm run build` passes locally
-- [ ] `git init` + initial commit pushed
-- [ ] GitHub repo created and code pushed
-- [ ] Vercel project connected to GitHub, auto-deploy on `main` confirmed
+- [x] `git init` + initial commit pushed
+- [x] GitHub repo created and code pushed
+- [x] Vercel project connected to GitHub, auto-deploy on `main` confirmed
+
+---
+
+#### Sprint 0 handoff — use this to start Sprint 1
+
+```
+Sprint 0 is done. The project is a Vite React app at /Users/dipto/Code/pet-projects/1-linksaver.
+It has a GitHub repo (public), Vercel auto-deploy on main, and a GitHub Actions CI build gate on PRs.
+CLAUDE.md has all code quality rules, UI copy rules, and sprint deliverable checklists — read it first.
+
+We are starting Sprint 1: Tailwind CSS setup.
+Create a branch feature/tailwind-setup, install tailwindcss and @tailwindcss/vite, wire it into
+vite.config.js and index.css, and update App.jsx with a simple centered layout and heading to prove
+it works. Follow all rules in CLAUDE.md. Go through the Sprint 1 checklist item by item before
+calling it done.
+```
 
 ---
 
