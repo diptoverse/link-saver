@@ -65,17 +65,66 @@ src/
 
 ---
 
-## Sprint start protocol
+## How every sprint runs
 
-Before doing anything at the start of a sprint, always give the user this overview:
+This is the exact workflow to follow for every sprint, every time, without the user having to ask.
 
-1. **What it does** — what this sprint adds from the user's perspective, and why it matters for the sprints after it
-2. **How it's implemented** — the technical approach, file by file
-3. **Steps** — ordered list of every action in the sprint
-4. **Success checks** — concrete, testable things that confirm the sprint is done correctly
+---
 
-Only after the user says they're ready, ask about the first task.
-For each task, ask whether the user wants to do it or Claude before executing anything.
+### Step 1 — Sprint briefing
+
+When a sprint starts, give this before touching any code:
+
+- **What** — what this sprint builds, from the user's perspective
+- **Why** — why it's needed now, what it unlocks for later sprints
+- **Sub-tasks** — the full ordered list of sub-tasks to complete this sprint
+- **Deliverables** — concrete, testable things that confirm the sprint is done
+
+Wait for the user to say they're ready before moving on.
+
+---
+
+### Step 2 — Sub-tasks one by one
+
+Go through each sub-task in order. For every sub-task:
+
+1. Tell the user **what** the sub-task is
+2. Tell the user **why** we're doing it — plain language, 1-2 sentences
+3. Ask: "Do you want to do this or should I?"
+
+If user says **"me"** — tell them exactly what to run or do, then wait for confirmation before moving to the next sub-task.
+
+If user says **"you"** — explain how you will implement it (which file, what change, why that approach), wait for the user to confirm, then write the code.
+
+Never skip the what/why. Never write code without being asked. Never move to the next sub-task without confirmation the current one is done.
+
+---
+
+### Step 3 — Sprint completion check
+
+After all sub-tasks are done, go through the sprint's deliverables checklist one by one and confirm each is met. Fix anything missing before closing the sprint.
+
+---
+
+### Step 4 — Commit, push, PR, merge
+
+Only after the completion check passes:
+
+1. Commit with the correct conventional commit message
+2. Push the branch
+3. Open a PR on GitHub
+4. Confirm CI passes and Vercel preview looks correct
+5. Squash merge the PR
+6. Pull main locally
+
+---
+
+### Step 5 — Handoff (automatic, every sprint)
+
+After the sprint is fully merged, without the user asking:
+
+1. Mark all checklist items as done in the sprint deliverables section below
+2. Add a handoff block under the sprint with the exact prompt the user can copy-paste into a new session to start the next sprint — with full context baked in, no assumptions
 
 ---
 
@@ -126,12 +175,28 @@ calling it done.
 ---
 
 ### Sprint 1 — Tailwind CSS
-- [ ] `tailwindcss` and `@tailwindcss/vite` installed
-- [ ] `vite.config.js` updated with Tailwind plugin
-- [ ] `index.css` imports Tailwind
-- [ ] `App.jsx` styled: centered layout, heading — visible proof Tailwind works
-- [ ] `npm run dev` shows a styled page
-- [ ] `npm run build` passes
+- [x] `tailwindcss` and `@tailwindcss/vite` installed
+- [x] `vite.config.js` updated with Tailwind plugin
+- [x] `index.css` imports Tailwind
+- [x] `App.jsx` styled: centered layout, heading — visible proof Tailwind works
+- [x] `npm run dev` shows a styled page
+- [x] `npm run build` passes
+
+---
+
+#### Sprint 1 handoff — use this to start Sprint 2
+
+```
+Sprint 1 is done. Tailwind CSS is set up and working. The project is at /Users/dipto/Code/pet-projects/1-linksaver on the main branch.
+
+Completed so far:
+- Sprint 0: Vite React scaffold, GitHub repo (public), Vercel auto-deploy, GitHub Actions CI gate
+- Sprint 1: Tailwind CSS installed, wired into vite.config.js and index.css, App.jsx cleaned up
+
+Read CLAUDE.md before doing anything. It has the code quality rules, UI copy rules, sprint workflow protocol, and all deliverable checklists. Follow the sprint workflow exactly as described there — briefing first, then sub-tasks one by one, then completion check, then commit/push/PR/merge, then update CLAUDE.md.
+
+We are starting Sprint 2: Supabase schema and client setup.
+```
 
 ---
 
